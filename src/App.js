@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import Tree from 'react-d3-tree';
+// import orgChart from "./utils/data.json"
+import { Box, useTheme, useMediaQuery, Typography } from "@mui/material";
+import AppBarComponent from "./AppBar"
+import Hierarchy from "./pages/Hierarchy"
+import ReactOrganizationalChart from "./pages/ReactOrganizationalChart"
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Box sx= {{
+            backgroundColor: "white",
+            minHeight: "100vh",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignItems: "center",
+            // justifyContent: "center",
+            // fontSize: "calc(10px + 2vmin)",
+            // color: "white"
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <AppBarComponent />
+          {/* <Hierarchy /> */}
+          <ReactOrganizationalChart />
+      </Box>
     </div>
   );
 }
