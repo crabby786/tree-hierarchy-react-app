@@ -8,7 +8,7 @@
         "isEditing" : false,
         "children": [
             {
-                "parentId": "c1", "id": "c1c1", "name": "qa", "label": "QA team", "isSelected" : false, "isEditing" : false
+                "parentId": "c1", "id": "c1c1", "name": "qa", "label": "QA team", "isSelected" : false, "isEditing" : false, "children": []
             }
         ]
     },
@@ -21,17 +21,17 @@
         "isEditing" : false,
         "children": [
             {
-                "parentId": "c2", "id": "c2c1", "name": "accounting", "label": "Accounting", "isSelected" : false, "isEditing" : false
+                "parentId": "c2", "id": "c2c1", "name": "accounting", "label": "Accounting", "isSelected" : false, "isEditing" : false, "children": []
             },
             {
                 "parentId": "c2", "id": "c2c2", "name": "h3", "label": "HR Dept",  "isSelected" : false, "isEditing" : false, "children": [
                     {
-                        "parentId": "c2c2", "id": "c2c2c1", "name": "payrollTeam", "label": "Payroll team", "isSelected" : false, "isEditing" : false
+                        "parentId": "c2c2", "id": "c2c2c1", "name": "payrollTeam", "label": "Payroll team", "isSelected" : false, "isEditing" : false, "children": []
                     }
                 ]
             },
             {
-                "parentId": "c2", "id": "c2c3", "name": "legalTeam", "label": "Legal Team", "isSelected" : false, "isEditing" : false
+                "parentId": "c2", "id": "c2c3", "name": "legalTeam", "label": "Legal Team", "isSelected" : false, "isEditing" : false, "children": []
             }
         ]
     },
@@ -41,6 +41,7 @@
         "name" : "sales",
         "label" : "Sales",
         "isSelected" : false, 
-        "isEditing" : false
+        "isEditing" : false,
+        "children": []
     }
 ]
