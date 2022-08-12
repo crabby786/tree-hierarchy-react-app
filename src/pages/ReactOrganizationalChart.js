@@ -12,51 +12,51 @@ const ReactOrganizationalChart = (props) => {
     const [selectedChild, setSelectedChild] = useState({})
 
     const handleSelectedChild = (childObj) => {
-        // childObj.isEditing = true
         setSelectedChild(childObj)
     }
 
     const [copyDataArr, setCopyDataArr] = useState(HEIRARCHY_JSON_DATA)
 
-    // let abc = [...copyDataArr]
-
     const updateCopyDataArr = (selectedChildren) => {
-        console.log('yooo')
-        selectedChildren.isSelected = true
-        // console.log('selectedChildren', selectedChildren.label)
-        // let newCopy = [...copyDataArr]
-        // let activeChild = {}
-        // // const selectedItemIndex = newCopy.findIndex(obj => obj.id === activeChild.id)
-        // const selectedItemIndex = newCopy.findIndex(obj => obj.id === selectedChildren.id)
-        // console.log('selectedItemIndex', selectedItemIndex)
-        // if(selectedItemIndex !== -1) {
-        //     // newCopy[selectedItemIndex] = selectedChildren
-        //     // newCopy[selectedItemIndex].isSelected = true
+        let newCopy = [...HEIRARCHY_JSON_DATA]
+        const isParentItem = selectedChildren.parentId == "main";
+        let activeChild = !isParentItem ? newCopy.find(obj => obj.id === selectedChildren.rootItem) : selectedChildren
 
-        //     //
+        const selectedRootItemIndex = newCopy.findIndex(obj => obj.id === activeChild.id)
+        
+        if(selectedRootItemIndex !== -1) {
+            let currentItem = {...selectedChildren}
+            currentItem.isSelected = true
+            currentItem.isEditing = true
 
-        //     setCopyDataArr(newCopy)
-        //     console.log('asddd', newCopy[selectedItemIndex], copyDataArr[selectedItemIndex])
-        // }
-        // newCopy[selectedItemIndex] = selectedChildren
-        // newCopy[selectedItemIndex].isSelected = true
-        // setCopyDataArr(newCopy)
-        // console.log('asddd', newCopy[selectedItemIndex], copyDataArr[selectedItemIndex])
-        if(selectedChildren && selectedChildren.children && selectedChildren.children.length > 0) {
-            console.log("child-parent", selectedChildren)
-
-            selectedChildren.children.map(obj => {
-                console.log("hrrrrr", obj.label)
-                updateCopyDataArr(obj)
-                // console.log("child-parent", obj)
-                // if(obj?.children.length> 0) {
-                //     updateCopyDataArr(obj)
-                // }
-            })
+            if(isParentItem) {
+                currentItem.children.length && (currentItem.children = handleChilds(currentItem.children, {isSelected:true}))
+                newCopy[selectedRootItemIndex] = currentItem
+            }
+            else {
+                const currentRootItem = newCopy[selectedRootItemIndex];
+                newCopy[selectedRootItemIndex] = {...currentRootItem, children :handleNest(currentRootItem.children, currentItem, {isSelected:true})}
+            }
+            setCopyDataArr(newCopy)
         }
-        else {
-           console.log("selectedChildren", selectedChildren, selectedChildren.isSelected)
-           selectedChildren.isSelected = true
+
+        function handleChilds(childs, {isSelected}) {
+            if(!childs.length) 
+            return []
+
+            let newChilds = childs.map(obj=>  {
+                return {...obj,isSelected, children: handleChilds(obj.children, {isSelected}) } 
+            } );
+            return newChilds
+        }
+        function handleNest(childs,currentItem, {isSelected}) {
+            if(!childs.length) 
+            return []
+
+            let newChilds = childs.map(obj=>  {
+                return obj.id == currentItem.id ? {...obj,isSelected, children: handleChilds(obj.children, {isSelected}) } : obj
+            } );
+            return newChilds
         }
     }
 
@@ -67,9 +67,9 @@ const ReactOrganizationalChart = (props) => {
         }
     }, [selectedChild])
     
-    useEffect(() => {
-        console.log('copyDataArr', copyDataArr)
-    }, [copyDataArr])
+    // useEffect(() => {
+    //     console.log('copyDataArr', copyDataArr)
+    // }, [copyDataArr])
 
     return (
         <Box w= {1} pt= {6} px= {5} display= "flex" justifyContent= "center" alignItems= "center" my= "auto">
