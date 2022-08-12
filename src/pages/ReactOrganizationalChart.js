@@ -12,7 +12,7 @@ const ReactOrganizationalChart = (props) => {
     const [selectedChild, setSelectedChild] = useState({})
 
     const handleSelectedChild = (childObj) => {
-        childObj.isEditing = true
+        // childObj.isEditing = true
         setSelectedChild(childObj)
     }
 
