@@ -1,12 +1,10 @@
 import React from "react"
-import { Box, useTheme, useMediaQuery, Typography } from "@mui/material";
-import { Tree, TreeNode } from 'react-organizational-chart';
+import { TreeNode } from 'react-organizational-chart';
 import LabelBox from "./LabelBox"
 
 const RecursiveComponent = ({ label, children, isSelected, isEditing, dataItem, handleSelectedChild }, xPadding) => {
     const hasChildren = children && children.length > 0
     
-    console.log('111', dataItem)
     return (
       <>
         {!hasChildren ? (

@@ -2,42 +2,45 @@
     {
         "parentId" : "main",
         "id" : "c1",
+        "rootParentNode": 0,
         "name" : "engrDept",
         "label" : "Engr Dept",
         "isSelected" : false,
         "isEditing" : false,
         "children": [
             {
-                "parentId": "c1", "id": "c1c1", "name": "qa", "label": "QA team", "isSelected" : false, "isEditing" : false, "children": []
+                "parentId": "c1", "id": "c1c1", "rootParentNode": 0, "name": "qa", "label": "QA team", "isSelected" : false, "isEditing" : false, "children": []
             }
         ]
     },
     {
         "parentId" : "main",
         "id" : "c2",
+        "rootParentNode": 1,
         "name" : "financeDept",
         "label" : "Finance Dept",
         "isSelected" : false,
         "isEditing" : false,
         "children": [
             {
-                "parentId": "c2", "id": "c2c1", "name": "accounting", "label": "Accounting", "isSelected" : false, "isEditing" : false, "children": []
+                "parentId": "c2", "id": "c2c1", "rootParentNode": 1, "name": "accounting", "label": "Accounting", "isSelected" : false, "isEditing" : false, "children": []
             },
             {
-                "parentId": "c2", "id": "c2c2", "name": "h3", "label": "HR Dept",  "isSelected" : false, "isEditing" : false, "children": [
+                "parentId": "c2", "id": "c2c2", "rootParentNode": 1, "name": "h3", "label": "HR Dept",  "isSelected" : false, "isEditing" : false, "children": [
                     {
-                        "parentId": "c2c2", "id": "c2c2c1", "name": "payrollTeam", "label": "Payroll team", "isSelected" : false, "isEditing" : false, "children": []
+                        "parentId": "c2c2", "id": "c2c2c1", "rootParentNode": 1, "name": "payrollTeam", "label": "Payroll team", "isSelected" : false, "isEditing" : false, "children": []
                     }
                 ]
             },
             {
-                "parentId": "c2", "id": "c2c3", "name": "legalTeam", "label": "Legal Team", "isSelected" : false, "isEditing" : false, "children": []
+                "parentId": "c2", "id": "c2c3", "rootParentNode": 1, "name": "legalTeam", "label": "Legal Team", "isSelected" : false, "isEditing" : false, "children": []
             }
         ]
     },
     {
         "parentId" : "main",
         "id" : "c3",
+        "rootParentNode": 2,
         "name" : "sales",
         "label" : "Sales",
         "isSelected" : false, 
