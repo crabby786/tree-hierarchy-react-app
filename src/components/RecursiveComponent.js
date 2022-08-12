@@ -3,19 +3,19 @@ import { Box, useTheme, useMediaQuery, Typography } from "@mui/material";
 import { Tree, TreeNode } from 'react-organizational-chart';
 import LabelBox from "./LabelBox"
 
-const RecursiveComponent = ({ label, children, isSelected, isEditing }, xPadding) => {
+const RecursiveComponent = ({ label, children, isSelected, isEditing, dataItem, handleSelectedChild }, xPadding) => {
     const hasChildren = children && children.length > 0
     
-    console.log('111', isSelected, isEditing)
+    console.log('111', dataItem)
     return (
       <>
         {!hasChildren ? (
-            <TreeNode label={<LabelBox text= {label} isSelected= {isSelected} isEditing= {isEditing} mx= {xPadding ? 4 : 0} />} />
+            <TreeNode label={<LabelBox text= {label} dataItem= {dataItem} handleSelectedChild= {handleSelectedChild} isSelected= {isSelected} isEditing= {isEditing} mx= {xPadding ? 4 : 0} />} />
         ) : (
             <>
-                <TreeNode label={<LabelBox text= {label} isSelected= {isSelected} isEditing= {isEditing} mx= {xPadding ? 4 : 0} />}>
+                <TreeNode label={<LabelBox text= {label} dataItem= {dataItem} handleSelectedChild= {handleSelectedChild} isSelected= {isSelected} isEditing= {isEditing} mx= {xPadding ? 4 : 0} />}>
                     {children.map((item, index) => (
-                        <RecursiveComponent key={index} {...item} xPadding= {true} />
+                        <RecursiveComponent dataItem= {item} key={index} {...item} xPadding= {true} handleSelectedChild= {handleSelectedChild} />
                     ))}
                 </TreeNode>
             </>
